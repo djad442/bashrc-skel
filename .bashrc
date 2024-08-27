@@ -162,3 +162,8 @@ fi
 ## display host name
 figlet $HOSTNAME | lolcat
 
+# Display IP address upon login
+echo "Your IP addresses are:"
+ip -4 address | grep inet | awk '{print $2}' | cut -d/ -f1
+
+
