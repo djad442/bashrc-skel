@@ -8,17 +8,17 @@ case $- in
       *) return;;
 esac
 
-# Define the path for the marker file
-MARKER_FILE=~/.script_ran_marker
+# # Define the path for the marker file
+# MARKER_FILE=~/.script_ran_marker
 
-# Check if the marker file exists
-if [ ! -f "$MARKER_FILE" ]; then
-    # Run your script
-    ~/synth-shell/setup.sh
+# # Check if the marker file exists
+# if [ ! -f "$MARKER_FILE" ]; then
+#     # Run your script
+#     ~/synth-shell/setup.sh
 
-    # Create the marker file to indicate the script has been run
-    touch "$MARKER_FILE"
-fi
+#     # Create the marker file to indicate the script has been run
+#     touch "$MARKER_FILE"
+# fi
 
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -127,6 +127,36 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+##-----------------------------------------------------
+## synth-shell-greeter.sh
+if [ -f ~/.config/synth-shell/synth-shell-greeter.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source ~/.config/synth-shell/synth-shell-greeter.sh
+fi
+
+##-----------------------------------------------------
+## synth-shell-prompt.sh
+if [ -f ~/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source ~/.config/synth-shell/synth-shell-prompt.sh
+fi
+
+##-----------------------------------------------------
+## better-ls
+if [ -f ~/.config/synth-shell/better-ls.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source ~/.config/synth-shell/better-ls.sh
+fi
+
+##-----------------------------------------------------
+## alias
+if [ -f ~/.config/synth-shell/alias.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source ~/.config/synth-shell/alias.sh
+fi
+
+##-----------------------------------------------------
+## better-history
+if [ -f ~/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- | grep i )" ]; then
+	source ~/.config/synth-shell/better-history.sh
 fi
 
 ## display host name
